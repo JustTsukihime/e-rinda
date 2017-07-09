@@ -1,0 +1,136 @@
+body {
+    font-family: Arial;
+    background-color: #fbfbfb;
+}
+
+header {
+    text-align: left;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 35px 20px;
+    color: #fbfbfb;
+    background-color: #436489;
+}
+
+.content {
+    margin: 0 auto;
+    width: 1500px;
+}
+
+header div {
+    margin: 0 auto;
+    width: 1130px;    
+}
+
+.queuers {
+	display: inline-block;
+	width: 20%;
+    margin: 20px 0px 0px 0px;
+    vertical-align: top;
+}
+
+#data > div {
+    font-size: 20px;
+    padding: 20px;
+    border-bottom: solid 1px #D5D5D5;
+    color: #111;
+}
+
+#data {
+    max-height: 70vh;
+    overflow-y: hidden;
+}
+
+#data > div.selected {
+    background-color: #ECECEC;
+}
+
+#data > div span:first-child {
+    margin-right: 5px;
+}
+
+#data > div.next {
+    background-color: #DDFFD8;
+}
+
+.info {
+    display: inline-block;
+    width: 80%;
+    margin-top: 20px;
+    padding-left: 45px;
+    box-sizing: border-box;
+}
+
+.info ul {
+    line-height: 40px;
+    font-size: 20px;
+    margin-left: 25px;
+}
+
+.infoTitle {
+    font-size: 23px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+    color: #307EA0;
+    font-weight: bold;
+}
+
+.QRcode {
+    background-image: url("/images/qrcode.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 260px;
+    height: 260px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: -4px;
+    vertical-align: top;
+}
+
+#avgTime {
+    color: #4C9843;
+}
+
+.link {
+    color: #4C9843
+}
+
+ul {
+    margin-left: 15px;
+    list-style: disc;
+}
+
+ul li {
+    margin: 3px 0;
+}
+
+.newQueuer {
+}
+
+.newQueuer div {
+    color: #fbfbfb;
+    background-color: #436489;
+    font-size: 18px;
+    padding: 20px;
+}
+
+footer {
+    position: fixed;
+    padding: 20px;
+    background-color: #676767;
+    background-image: url("/images/monochrome.png");
+    background-size: 15px 11px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 0;
+    color: #f0f0f0;
+    right: 0;
+}
+
+.time {}
+
+.updateInterval {
+    font-size: 13px;
+    color: #ccc;
+}

@@ -1,0 +1,8 @@
+<?php
+    $_config = array(
+	'DB_host' => '',
+	'DB_db' => '',
+	'DB_user' => '',
+	'DB_password' => ''
+    );
+?>
