@@ -10,5 +10,6 @@
     $resp["Queue"] = $db->getQueue($QID);
     $resp["AvgTime"] = $db->getAvgTime($QID);
     $resp["Time"] = time();
+	$res = $db->getOptions("Break"); $resp["Break"] = $res === false ? 0 : $res["value"];	
 	echo json_encode($resp);
 ?>

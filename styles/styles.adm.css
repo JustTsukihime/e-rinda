@@ -38,6 +38,7 @@ input {
 
   .column.left {
       max-width: 300px;
+	  min-width: 220px;
   }
 
 .column {
@@ -49,20 +50,48 @@ input {
 div.header {
 
 }
+div.infoMsg{
+	padding:10px;
+	font-weight:bold;
+}
+header{
+	padding:10px;
+}
 
+form{
+	padding:0px 10px;
+}
+form.paddingTop,.paddingTop{
+	padding-top:20px;
+}
+form.paddingBottom,.paddingBottom{
+	padding-bottom:20px;
+}
 
-#queuerList td {
+#queuerList td,.queuerList td {
 	padding: 10px;
 	border: 1px solid #ececec;
 }
 
-#queuerList th {
+#queuerList th,.queuerList th {
 	padding: 10px;
 	border: 1px solid #ececec;
 }
 
-#queuerList tr.waiting { background-color: #FFFFFF; }
-#queuerList tr.called { background-color: #DDFFD8; }
-#queuerList tr.dequeued { background-color: #D0F4F5; }
-#queuerList tr.out { background-color: #ff82c3; }
-#queuerList tr.purged { background-color: #ff5800; }
+#queuerList tr.waiting,.queuerList tr.waiting { background-color: #FFFFFF; }
+#queuerList tr.called,.queuerList tr.called { background-color: #DDFFD8; }
+#queuerList tr.dequeued,.queuerList tr.dequeued { background-color: #D0F4F5; }
+#queuerList tr.out,.queuerList tr.out { background-color: #ff82c3; }
+#queuerList tr.purged,.queuerList tr.purged { background-color: #ff5800; }
+
+button.purge{
+	font-weight:bold;
+}
+
+#queuerList td span{
+	font-size:0.7em;
+	color: #666666;
+}
+.hidden{
+	display:none;
+}

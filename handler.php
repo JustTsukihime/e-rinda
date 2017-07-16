@@ -27,6 +27,36 @@
 				$resp["Error"] = "Name not supplied";
 			}
 		break;
+		case "queue.break":
+			if (isset($_POST["Minutes"]) && intval($_POST["Minutes"]) && isset($_POST["QID"]) && intval($_POST["QID"])) {
+				$res = $db->query("SELECT * FROM `queuers` WHERE `QueueID` = ".intval($_POST["QID"])." LIMIT 1");
+				if (!$res->num_rows) {
+					$resp["Error"] = "Vēl nav neviena studenta!";
+				} else {				
+					$res = $db->query("SELECT * FROM `queuers` WHERE `QueueID` = ".intval($_POST["QID"])." AND `Status` = 'Called' LIMIT 1");
+					if ($res->num_rows) {
+						$resp["Error"] = "Rindā vēl ir izsauktie studenti!";
+					} else {
+						$res = $db->createOptions("Break", $_POST["Minutes"]*60 + time());
+						if ($res["Status"] == "Error") {
+							$resp["Error"] = $res["ID"];
+						} else {
+							$resp["ID"] = $res["ID"];
+						}					
+					}
+				}
+			} else {
+				$resp["Error"] = "Break minutes not supplied";
+			}
+		break;
+		case "queue.unbreak":			
+			$res = $db->createOptions("Break", time());
+			if ($res["Status"] == "Error") {
+				$resp["Error"] = $res["ID"];
+			} else {
+				$resp["ID"] = $res["ID"];
+			}					
+		break;
 		case "queue.get":
 			if (isset($_POST["QID"]) && intval($_POST["QID"])) {
 				$res = $db->getQueueADM($_POST["QID"]);
@@ -34,6 +64,7 @@
 					$resp["Error"] = $res;	
 				} else {
 					$resp["Queue"] = $res;
+					$res = $db->getOptions("Break"); $resp["Break"] = $res === false ? 0 : $res["value"];					
 				}
 			} else {
 				$resp["Error"] = "Queue ID not supplied";
@@ -62,6 +93,36 @@
 		case "queue.reenqueue":
 			if (isset($_POST["ID"]) && intval($_POST["ID"])) {
 				$res = $db->reenqueue($_POST["ID"]);
+				if ($res === false) {
+					$resp["Error"] = $res;	
+				}
+			} else {
+				$resp["Error"] = "Invalid data";
+			}
+		break;
+		case "queue.purge":
+			if (isset($_POST["ID"]) && intval($_POST["ID"])) {
+				$res = $db->purgeOne($_POST["ID"]);
+				if ($res === false) {
+					$resp["Error"] = $res;	
+				}
+			} else {
+				$resp["Error"] = "Invalid data";
+			}
+		break;
+		case "queue.delete":
+			if (isset($_POST["ID"]) && intval($_POST["ID"])) {
+				$res = $db->deleteID($_POST["ID"]);
+				if ($res === false) {
+					$resp["Error"] = $res;	
+				}
+			} else {
+				$resp["Error"] = "Invalid data";
+			}
+		break;
+		case "queue.complete":
+			if (isset($_POST["ID"]) && intval($_POST["ID"])) {
+				$res = $db->doneProcessing($_POST["ID"]);
 				if ($res === false) {
 					$resp["Error"] = $res;	
 				}

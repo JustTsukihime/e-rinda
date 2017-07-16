@@ -134,3 +134,8 @@ footer {
     font-size: 13px;
     color: #ccc;
 }
+
+#data > div span.time{
+	font-size:0.7em;
+	color: #666666;
+}
